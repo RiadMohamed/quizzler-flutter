@@ -36,6 +36,7 @@ class _QuizPageState extends State<QuizPage> {
     "Approximately one quarter of human bones are in the feet.",
     "A slug's blood is green."
   ];
+  List<bool> answers = [false, true, true];
   int questionNumber = 0;
 
   @override
@@ -75,6 +76,12 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //The user picked true.
+                bool correctAnswer = answers[questionNumber];
+                if (correctAnswer == true) {
+                  print("Correct");
+                } else {
+                  print("Wrong");
+                }
                 setState(() {
                   questionNumber = (questionNumber + 1) % 3;
                 });
@@ -97,13 +104,18 @@ class _QuizPageState extends State<QuizPage> {
               onPressed: () {
                 //The user picked false.
                 setState(() {
+                  bool correctAnswer = answers[questionNumber];
+                  if (correctAnswer == false) {
+                    print("Correct");
+                  } else {
+                    print("Wrong");
+                  }
                   questionNumber = (questionNumber + 1) % 3;
                 });
               },
             ),
           ),
         ),
-        //TODO: Add a Row here as your score keeper
         Row(
           children: scoreKeeper,
         ),
