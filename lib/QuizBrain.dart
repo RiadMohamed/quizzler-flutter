@@ -42,11 +42,23 @@ class QuizBrain {
     if (_questionNumber < _questions.length - 1) {
       _questionNumber++;
     } else {
-      _questionNumber = 0;
+      reset();
     }
   }
 
   int getCount() {
     return _questions.length;
+  }
+
+  bool isFinished() {
+    if (_questionNumber == 12) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  void reset() {
+    _questionNumber = 0;
   }
 }
